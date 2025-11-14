@@ -1,0 +1,77 @@
+---
+import LinkInline from "./LinkInline.astro"
+
+interface Achievement {
+  title: string
+  description: string
+  link?: string
+}
+
+const ACHIEVEMENTS: Achievement[] = [
+  {
+    title: "Finalist, Arambh Season 2",
+    description: "National Level Entrepreneurship Competition",
+    link: "", // Add drive link here
+  },
+  {
+    title: "Cisco Networking Basics Certification",
+    description: "NASSCOM certification completed",
+    link: "https://drive.google.com/file/d/1z1W1EBd19-ymSb_IpTen40UmQmJXZ0km/view",
+  },
+  {
+    title: "National-Level Semi Finalist",
+    description: "Flipkart Grid 7.0 and participated in 5+ Hackathons",
+    link: "https://drive.google.com/file/d/17mA_F7Kw6ylJzsYS_uKRj0Vy3l3xBM3y/view",
+  },
+  {
+    title: "Notion Event Manager",
+    description: "Orchestrated 3 events and delivered multiple engaging presentations",
+    link: "", // Add drive link here
+  },
+  {
+    title: "AIR 316 in NIMCET 2024",
+    description: "Scored 256 in CUET",
+    link: "", // Add drive link here
+  },
+]
+---
+
+<div class="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
+  {
+    ACHIEVEMENTS.map((achievement) => (
+      <div class="relative p-6 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-yellow-500 dark:hover:border-yellow-500 transition-colors">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">
+          {achievement.title}
+        </h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">
+          {achievement.description}
+        </p>
+        {
+          achievement.link && (
+            <LinkInline href={achievement.link}>
+              View Certificate{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 icon icon-tabler icon-tabler-chevron-right"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <>
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M9 6l6 6l-6 6" />
+                </>
+              </svg>
+            </LinkInline>
+          )
+        }
+      </div>
+    ))
+  }
+</div>
+

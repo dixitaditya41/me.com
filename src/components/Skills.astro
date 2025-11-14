@@ -1,0 +1,33 @@
+---
+import CodeIcon from "./icons/Code.astro"
+
+const SKILLS = {
+  "Programming Languages": ["Java", "JavaScript", "TypeScript", "Python"],
+  "Frontend": ["React", "React Redux", "HTML5", "CSS3", "TailwindCSS"],
+  "Backend": ["Node.js", "Express.js", "RESTful APIs", "FastAPI", "WebSockets"],
+  "Database/Cache": ["MongoDB", "MySQL", "PostgreSQL", "Redis"],
+  "Infra/DevOps": ["AWS", "Docker", "Kubernetes", "Nginx", "GitHub Actions", "Vercel"],
+  "CS": ["DSA", "OOP", "OS", "DBMS", "CN"],
+}
+---
+
+<div class="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3">
+  {
+    Object.entries(SKILLS).map(([category, skills]) => (
+      <div class="flex flex-col gap-2 p-6 rounded-lg bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
+          <CodeIcon class="size-5 text-yellow-500" />
+          {category}
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-200 rounded-full dark:bg-gray-800 dark:text-gray-300">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</div>
+

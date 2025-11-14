@@ -1,0 +1,22 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "December 1, 2024 – June 30, 2025",
+    title: "Backend Developer Intern",
+    company: "Wikiance",
+    description:
+      "• Architected high-throughput RESTful APIs using Node.js, MongoDB, caching, and GitHub Actions-based pipelines to slash API response times by 20%.\n• Integrated role-based access control (RBAC) using JWT authentication, securing 30+ endpoints.\n• Developed and maintained 50+ APIs for two key modules—Wikiance Control Panel and Hiver Ticket.\n• Set up a real-time notification system using RabbitMQ to handle user events (e.g., role updates, edit requests).\n• Ensured robust API boundaries with Zod-based schema validation, while using SonarQube for maintaining code quality, and Sentry.io for real-time error tracking and diagnostics in production.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

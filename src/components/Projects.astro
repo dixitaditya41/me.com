@@ -1,0 +1,143 @@
+---
+import GitHub from "./icons/GitHub.astro"
+import NextJS from "./icons/NextJS.astro"
+import Tailwind from "./icons/Tailwind.astro"
+import CodeIcon from "./icons/Code.astro"
+import Link from "./icons/Link.astro"
+import LinkButton from "./LinkButton.astro"
+
+const TAGS = {
+  REACT: {
+    name: "React",
+    class: "bg-blue-600 text-white",
+    icon: CodeIcon,
+  },
+  NODE: {
+    name: "Node.js",
+    class: "bg-green-600 text-white",
+    icon: CodeIcon,
+  },
+  MONGODB: {
+    name: "MongoDB",
+    class: "bg-emerald-600 text-white",
+    icon: CodeIcon,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "bg-blue-700 text-white",
+    icon: CodeIcon,
+  },
+  AWS: {
+    name: "AWS",
+    class: "bg-orange-600 text-white",
+    icon: CodeIcon,
+  },
+  DOCKER: {
+    name: "Docker",
+    class: "bg-blue-500 text-white",
+    icon: CodeIcon,
+  },
+}
+const PROJECTS = [
+  {
+    title: "TrueGradient Chat - AI-Powered Chat Platform",
+    description:
+      "A full-stack AI-powered chat platform that integrates authentication, credit-based LLM chat, organization management, and real-time notifications. Built with clean code, modular design, and production-level quality as the foundational architecture for a complete AI workspace platform.",
+    link: "https://true-gradient-chat.vercel.app/",
+    github: "https://github.com/dixitaditya41",
+    image: "/projects/truegradient.webp",
+    tags: [TAGS.REACT, TAGS.NODE, TAGS.TAILWIND],
+  },
+  {
+    title: "NIT-B Exam Portal",
+    description:
+      "Implemented role-based authentication to create exams, upload candidates, and schedule CBT sessions. Enabled students to attempt exams through integrated PDF viewing and MCQ interface with automated scoring from uploaded answer keys. Secured exam sessions using Safe Exam Browser for full-screen delivery and anti-cheating controls. Designed reporting system for detailed performance insights and automated result exports.",
+    link: "https://nitbexams.onrender.com/",
+    github: "https://github.com/dixitaditya41",
+    image: "/projects/nitbexams.webp",
+    tags: [TAGS.REACT, TAGS.NODE, TAGS.MONGODB],
+  },
+  {
+    title: "WorkLoop - Workspace Platform",
+    description:
+      "Developed a workspace platform enabling companies to create workspaces, assign roles, and manage teams. Built an AI-assisted task management system for creating, assigning, and tracking tasks across projects. Integrated real-time WebSocket chat and delivered daily performance and productivity reports via dashboard. Deployed on AWS EC2 using Docker for consistent environment setup and scalable deployment.",
+    link: "https://work-loop-pink.vercel.app/",
+    github: "https://github.com/dixitaditya41",
+    image: "/projects/workloop.webp",
+    tags: [TAGS.REACT, TAGS.NODE, TAGS.MYSQL, TAGS.AWS, TAGS.DOCKER],
+  },
+  {
+    title: "Library Attendance System",
+    description:
+      "Implemented a Dynamic QR Code–Based attendance system using the MERN stack, eliminating manual processes and improving check-in speed for over 3,000+ attendees. Created an administrative dashboard with real-time statistics leveraging MongoDB's aggregation pipeline. Successfully deployed on college-owned servers, now live with 20,000+ attendance entries. Integrated Single Sign-On (SSO) for unified authentication; managed processes with PM2, fronted by Nginx.",
+    link: "https://att-lib.manit.ac.in/",
+    github: "https://github.com/dixitaditya41",
+    image: "/projects/library.webp",
+    tags: [TAGS.REACT, TAGS.NODE, TAGS.MONGODB],
+  },
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center gap-8 transition-all duration-300 ease-in-out transform rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-lg overflow-hidden md:group-hover:-translate-y-1 md:group-hover:shadow-2xl md:group-hover:border-yellow-500 dark:md:group-hover:border-yellow-500">
+      <img 
+        alt={title} 
+        class="w-full h-auto object-contain rounded-lg transition-transform duration-300 md:group-hover:scale-[1.02]" 
+        loading="lazy" 
+        src={image} 
+      />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+
+
